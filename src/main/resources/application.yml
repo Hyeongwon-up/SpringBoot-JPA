@@ -1,21 +1,20 @@
 spring:
   datasource:
-    hikari:
-      jdbc-url: jdbc:h2:tcp://localhost/~/jpashop;MVCC=TRUE
-      username: sa
-      password:
-      driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
 
 
   jpa:
     hibernate:
       ddl-auto: create
-    create properties:
+    properties:
       hibernate:
-#        show_sql:  true
+        show_sql:  true
         format_sql:  true
 
 
-loggin:
-  level:
-    org.hibernate.SQL: debug
+loggin.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace

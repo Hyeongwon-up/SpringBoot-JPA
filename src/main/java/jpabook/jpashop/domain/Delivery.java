@@ -15,7 +15,7 @@ public class Delivery {
     private Long id;
 
 
-    @OneToOne
+    @OneToOne(mappedBy ="delivery")
     private Order order;
 
     @Embedded

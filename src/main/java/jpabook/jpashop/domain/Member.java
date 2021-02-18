@@ -18,8 +18,20 @@ public class Member {
     @Column(name="member_id")
     private Long id;
 
-    @NotEmpty
+    @Column(unique = true)
+    private String userid; //중복확인
+
+    private String userpwd;
+
+    private String userpwd2;
+
+    private String username; //중복확인
+
     private String name;
+
+    private String sex;
+
+
 
     @Embedded
     private Address address;

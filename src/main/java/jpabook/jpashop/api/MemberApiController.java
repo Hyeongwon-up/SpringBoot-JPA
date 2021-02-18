@@ -1,6 +1,9 @@
 package jpabook.jpashop.api;
 
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.service.MemberService;
 import lombok.AllArgsConstructor;
@@ -12,6 +15,8 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Api(tags = {"1. User"})
 @RestController
 @RequiredArgsConstructor
 public class MemberApiController {
@@ -52,9 +57,9 @@ public class MemberApiController {
         return new CreateMemberResponse(id);
     }
 
-
+    @ApiOperation(value = "회원 입력", notes = "회원을 입력한다.")
     @PostMapping("/api/v2/members")
-    public CreateMemberResponse saveMemberV2(@RequestBody @Valid CreateMemberRequest request) {
+    public CreateMemberResponse saveMemberV2(@ApiParam(value = "정보입") @RequestBody @Valid CreateMemberRequest request) {
 
         Member member = new Member();
         member.setName(request.getName());
@@ -88,7 +93,17 @@ public class MemberApiController {
 
     @Data
     static class CreateMemberRequest {
+        private String userid; //중복확인
+
+        private String userpwd;
+
+        private String userpwd2;
+
+        private String username; //중복확인
+
         private String name;
+
+        private String sex;
     }
 
     @Data
